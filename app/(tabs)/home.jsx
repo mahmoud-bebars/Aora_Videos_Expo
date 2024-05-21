@@ -5,6 +5,7 @@ import {
   Image,
   RefreshControl,
   Alert,
+  ActivityIndicator,
 } from "react-native";
 import { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -17,7 +18,7 @@ import useAppwrite from "../../lib/useAppwrite";
 import VideoCard from "../../components/VideoCard";
 
 const Home = () => {
-  const { data: posts, refetch } = useAppwrite(getAllPosts);
+  const { data: posts, refetch, loading } = useAppwrite(getAllPosts);
 
   const { data: latestPosts, refetch: refetchLatest } =
     useAppwrite(getLatestPosts);
@@ -38,12 +39,18 @@ const Home = () => {
         keyExtractor={(item) => item.$id}
         renderItem={({ item }) => <VideoCard video={item} />}
         ListHeaderComponent={() => <ListHeader latest={latestPosts} />}
-        ListEmptyComponent={() => (
-          <EmptyState
-            title="No Videos Found"
-            subtitle="Be the First One to Upload Video"
-          />
-        )}
+        ListEmptyComponent={() => {
+          return loading ? (
+            <View className="w-full h-full items-center justify-center">
+              <ActivityIndicator size="large" />
+            </View>
+          ) : (
+            <EmptyState
+              title="No Videos Founded"
+              subtitle="Be the First One to Upload about it"
+            />
+          );
+        }}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
