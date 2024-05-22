@@ -1,12 +1,10 @@
 import {
   View,
-  Text,
   FlatList,
   ActivityIndicator,
   TouchableOpacity,
   Image,
 } from "react-native";
-import { useEffect } from "react";
 
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -16,7 +14,6 @@ import useAppwrite from "../../lib/useAppwrite";
 
 import VideoCard from "../../components/VideoCard";
 import EmptyState from "../../components/EmptyState";
-import SearchInput from "../../components/SearchInput";
 import { icons } from "../../constants";
 import InfoBox from "../../components/InfoBox";
 import { router } from "expo-router";
@@ -24,11 +21,7 @@ import { router } from "expo-router";
 const Profile = () => {
   const { setIsLoggedIn, user, setUser, isLoading, setIsLoading } =
     useGlobalContext();
-  const {
-    data: posts,
-    refetch,
-    loading,
-  } = useAppwrite(() => getUserPosts(user.$id));
+  const { data: posts, loading } = useAppwrite(() => getUserPosts(user.$id));
   const logout = async () => {
     setIsLoading(true);
 
