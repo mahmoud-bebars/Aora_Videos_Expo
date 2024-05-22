@@ -7,7 +7,7 @@ import {
   Alert,
   ActivityIndicator,
 } from "react-native";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "../../constants";
 import SearchInput from "../../components/SearchInput";
@@ -16,6 +16,7 @@ import EmptyState from "../../components/EmptyState";
 import { getAllPosts, getLatestPosts } from "../../lib/appwrite";
 import useAppwrite from "../../lib/useAppwrite";
 import VideoCard from "../../components/VideoCard";
+import { useGlobalContext } from "../../context/GlobalProvider";
 
 const Home = () => {
   const { data: posts, refetch, loading } = useAppwrite(getAllPosts);
@@ -62,6 +63,7 @@ const Home = () => {
 export default Home;
 
 const ListHeader = ({ latest }) => {
+  const { user } = useGlobalContext();
   return (
     <View className="my-6 px-4 space-y-6">
       <View className="justify-between items-start flex-row mb-6 ">
@@ -73,7 +75,7 @@ const ListHeader = ({ latest }) => {
             className="text-2xl capitalize font-psemibold
                 text-white"
           >
-            mahmoud bebars
+            {user?.username}
           </Text>
         </View>
         <View className="mt-1.5">
