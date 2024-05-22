@@ -7,22 +7,29 @@ import { images } from "../../constants";
 import CustomButton from "../../components/CustomButton";
 
 import FormField from "../../components/FormField";
-import { Link, router, useRouter } from "expo-router";
+import { Link, router } from "expo-router";
 import { createUser } from "../../lib/appwrite";
+import { useGlobalContext } from "../../context/GlobalProvider";
 
 const SignUn = () => {
+  const { setUser, setIsLoggedIn } = useGlobalContext();
   const [form, setForm] = useState({ username: "", email: "", password: "" });
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
+
   const handleSubmit = async () => {
     if (!form.username || !form.email || !form.password) {
       Alert.alert("Error", "Please Fill in all the feild");
     }
     setLoading(true);
     try {
-      const result = await createUser(form.email, form.password, form.username);
+      const newUser = await createUser(
+        form.email,
+        form.password,
+        form.username
+      );
 
-      // set it to global state with context API...
+      setUser(newUser);
+      setIsLoggedIn(true);
 
       router.replace("/home");
     } catch (error) {
