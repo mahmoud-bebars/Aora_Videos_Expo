@@ -7,9 +7,7 @@ import { useLocalSearchParams } from "expo-router";
 import { searchPosts } from "../../lib/appwrite";
 import useAppwrite from "../../lib/useAppwrite";
 
-import VideoCard from "../../components/VideoCard";
-import EmptyState from "../../components/EmptyState";
-import SearchInput from "../../components/SearchInput";
+import { VideoCard, EmptyState, SearchInput } from "../../components/";
 
 const Search = () => {
   const { query } = useLocalSearchParams();

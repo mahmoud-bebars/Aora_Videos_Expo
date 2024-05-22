@@ -4,9 +4,8 @@ import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { images } from "../../constants";
-import CustomButton from "../../components/CustomButton";
+import { CustomButton, FormField } from "../../components";
 
-import FormField from "../../components/FormField";
 import { Link, router } from "expo-router";
 import { createUser } from "../../lib/appwrite";
 import { useGlobalContext } from "../../context/GlobalProvider";
