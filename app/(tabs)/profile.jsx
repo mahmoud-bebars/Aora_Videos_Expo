@@ -22,7 +22,7 @@ import InfoBox from "../../components/InfoBox";
 import { router } from "expo-router";
 
 const Profile = () => {
-  const { isLoggedIn, setIsLoggedIn, user, setUser, isLoading, setIsLoading } =
+  const { setIsLoggedIn, user, setUser, isLoading, setIsLoading } =
     useGlobalContext();
   const {
     data: posts,
