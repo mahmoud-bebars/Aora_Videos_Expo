@@ -1,6 +1,7 @@
-# React Native Pixels Photos App
+# React Native  Aora App
 
-![repo screen-2](https://github.com/mahmoud-bebars/Pixels-react-native/assets/66588352/0dbe4a01-b263-47de-9dc2-3592ade008e0)
+![repo screen](https://github.com/mahmoud-bebars/Aora_Videos_Expo/assets/66588352/70137594-0292-4890-a402-992dbc80c7cd)
+
 
 ## 🚀 How to use
 
